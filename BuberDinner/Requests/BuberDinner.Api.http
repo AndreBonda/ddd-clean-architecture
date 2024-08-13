@@ -1,0 +1,24 @@
+### Setup
+@BuberDinner.Api_HostAddress = https://localhost:5003
+
+### Login
+POST {{BuberDinner.Api_HostAddress}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "andrew@gmail.com",
+  "password": "Andrew2024!*"
+}
+
+
+### Register
+POST {{BuberDinner.Api_HostAddress}}/auth/register
+Content-Type: application/json
+
+{
+  "firstName": "Andrew",
+  "lastName": "White",
+  "email": "andrew@gmail.com",
+  "password": "Andrew2024!*"
+}
+
