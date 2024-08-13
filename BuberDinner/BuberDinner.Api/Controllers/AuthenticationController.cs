@@ -6,7 +6,7 @@ namespace BuberDinner.Api.Controllers;
 
 [ApiController]
 [Route("auth")]
-public class AuthenticationController(IAuthenticationService authenticationService) : ControllerBase
+public class AuthenticationController(IAuthenticationService authenticationService, IConfiguration configuration) : ControllerBase
 {
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)

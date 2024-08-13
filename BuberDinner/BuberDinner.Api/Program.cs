@@ -7,7 +7,7 @@ builder.Services.AddControllers();
 
 builder.Services
     .AddApplicationInjections()
-    .AddInfrastructureInjections();
+    .AddInfrastructureInjections(builder.Configuration);
 
 var app = builder.Build();
 
