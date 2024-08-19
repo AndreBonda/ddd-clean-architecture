@@ -13,10 +13,10 @@ public class AuthenticationController(IAuthenticationService authenticationServi
     {
         var result = authenticationService.Register(request.FirstName, request.LastName, request.Email, request.Password);
         AuthenticationResponse response = new(
-            result.Id,
-            result.FirstName,
-            result.LastName,
-            result.Email,
+            result.User.Id,
+            result.User.FirstName,
+            result.User.LastName,
+            result.User.Email,
             result.Token);
         return Ok(response);
     }
@@ -26,10 +26,10 @@ public class AuthenticationController(IAuthenticationService authenticationServi
     {
         var result = authenticationService.Login(request.Email, request.Password);
         AuthenticationResponse response = new(
-            result.Id,
-            result.FirstName,
-            result.LastName,
-            result.Email,
+            result.User.Id,
+            result.User.FirstName,
+            result.User.LastName,
+            result.User.Email,
             result.Token);
         return Ok(response);
     }
