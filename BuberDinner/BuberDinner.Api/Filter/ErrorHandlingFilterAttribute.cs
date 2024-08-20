@@ -6,6 +6,10 @@ namespace BuberDinner.Api.Filter;
 
 public class ErrorHandlingFilterAttribute : ExceptionFilterAttribute
 {
+    /// <summary>
+    /// Catch unhandled exception
+    /// </summary>
+    /// <param name="context"></param>
     public override void OnException(ExceptionContext context)
     {
         var exception = context.Exception;

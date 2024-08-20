@@ -14,9 +14,6 @@ builder.Services
 
 var app = builder.Build();
 
-// Remove comment if you want to use global error handling middleware for handling errors
-// app.UseMiddleware<ErrorHandling>();
-
 app.UseHttpsRedirection();
 
 app.MapControllers();
