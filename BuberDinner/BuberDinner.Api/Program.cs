@@ -1,9 +1,11 @@
-using BuberDinner.Api.Middleware;
+using BuberDinner.Api.Filter;
 using BuberDinner.Application;
 using BuberDinner.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Remove comment if you want to use error handling filters for handling errors
+builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>());
 builder.Services.AddControllers();
 
 builder.Services
@@ -12,7 +14,9 @@ builder.Services
 
 var app = builder.Build();
 
-app.UseMiddleware<ErrorHandling>();
+// Remove comment if you want to use global error handling middleware for handling errors
+// app.UseMiddleware<ErrorHandling>();
+
 app.UseHttpsRedirection();
 
 app.MapControllers();
