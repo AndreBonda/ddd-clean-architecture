@@ -1,21 +1,22 @@
 using System.Net;
-using BuberDinner.Application.Common.Errors;
-using BuberDinner.Application.Services.Authentication;
+using BuberDinner.Application.Authentication.Commands.RegisterUser;
+using BuberDinner.Application.Authentication.Common;
+using BuberDinner.Application.Authentication.Queries.Login;
 using BuberDinner.Contracts.Authentication;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuberDinner.Api.Controllers;
 
 [ApiController]
 [Route("auth")]
-public class AuthenticationController(IAuthenticationService authenticationService, IConfiguration configuration)
-    : ControllerBase
+public class AuthenticationController(ISender mediator) : ControllerBase
 {
     [HttpPost("register")]
-    public IActionResult Register(RegisterRequest request)
+    public async Task<IActionResult> Register(RegisterRequest request)
     {
-        var registerResult =
-            authenticationService.Register(request.FirstName, request.LastName, request.Email, request.Password);
+        RegisterUserCommand command = new(request.FirstName, request.LastName, request.Email, request.Password);
+        var registerResult = await mediator.Send(command);
 
         return registerResult.MatchFirst(
             result => Ok(MapAuthResult(result)),
@@ -23,9 +24,10 @@ public class AuthenticationController(IAuthenticationService authenticationServi
     }
 
     [HttpPost("login")]
-    public IActionResult Login(LoginRequest request)
+    public async Task<IActionResult> Login(LoginRequest request)
     {
-        var loginResult = authenticationService.Login(request.Email, request.Password);
+        LoginQuery query = new(request.Email, request.Password);
+        var loginResult = await mediator.Send(query);
 
         return loginResult.MatchFirst(
             result => Ok(MapAuthResult(result)),
