@@ -1,4 +1,5 @@
 using BuberDinner.Application.Authentication.Common;
+using BuberDinner.Application.Authentication.Mapping;
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Interfaces.Persistence;
 using BuberDinner.Domain.Entities;
@@ -17,18 +18,10 @@ public class RegisterUserCommandHandler(
     {
         // Check if user already exists
         if (userRepository.GetUserByEmail(command.Email) is not null)
-        {
             return Errors.User.DuplicateEmail;
-        }
 
         // Create user (generate an uid)
-        User user = new()
-        {
-            FirstName = command.FirstName,
-            LastName = command.LastName,
-            Email = command.Email,
-            Password = command.Password
-        };
+        User user = command.ToUser();
         userRepository.AddUser(user);
 
         // Create JWT
