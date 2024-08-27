@@ -1,0 +1,7 @@
+### Setup
+@BuberDinner.Api_HostAddress = https://localhost:5003
+
+### List dinners
+GET {{BuberDinner.Api_HostAddress}}/dinners
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiYzQzYTMxYy1kYTdjLTQ4YWUtOTUwNy03Y2FjYTE4MzA4YTEiLCJnaXZlbl9uYW1lIjoiQW5kcmV3IiwiZmFtaWx5X25hbWUiOiJXaGl0ZSIsIm5iZiI6MTcyNDc2MzM2NCwiZXhwIjoxNzI0NzY2OTY0LCJpc3MiOiJCdWJlckRpbm5lciIsImF1ZCI6IkJ1YmVyRGlubmVyIn0.k8giv75npJh8DlA6zukOou66ew9DGMEWsIP-EurULmw
