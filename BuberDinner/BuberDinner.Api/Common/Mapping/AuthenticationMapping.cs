@@ -11,7 +11,7 @@ public static class AuthenticationMapping
 
     public static AuthenticationResponse ToResponse(this AuthenticationResult result)
         => new(
-            result.User.Id,
+            result.User.Id.Value,
             result.User.FirstName,
             result.User.LastName,
             result.User.Email,

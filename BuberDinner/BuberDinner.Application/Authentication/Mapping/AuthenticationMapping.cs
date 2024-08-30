@@ -1,16 +1,15 @@
 using BuberDinner.Application.Authentication.Commands.RegisterUser;
-using BuberDinner.Domain.Entities;
+using BuberDinner.Domain.User;
 
 namespace BuberDinner.Application.Authentication.Mapping;
 
 public static class AuthenticationMapping
 {
     public static User ToUser(this RegisterUserCommand command)
-        => new()
-        {
-            FirstName = command.FirstName,
-            LastName = command.LastName,
-            Email = command.Email,
-            Password = command.Password
-        };
+        => User.Create(
+            command.FirstName,
+            command.LastName,
+            command.Email,
+            command.Password
+        );
 }
