@@ -1,0 +1,36 @@
+### Setup
+@BuberDinner.Api_HostAddress = https://localhost:5003
+@hostId = 7f89e391-d82f-4543-ac5c-7c616d33458e
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJCdWJlckRpbm5lci5Eb21haW4uVXNlci5WYWx1ZU9iamVjdHMuVXNlcklkIiwiZ2l2ZW5fbmFtZSI6IkFuZHJldyIsImZhbWlseV9uYW1lIjoiV2hpdGUiLCJuYmYiOjE3MjU3MDYyNjUsImV4cCI6MTcyNTcwOTg2NSwiaXNzIjoiQnViZXJEaW5uZXIiLCJhdWQiOiJCdWJlckRpbm5lciJ9.ryb-RgzCAsHpkxCrGoCA57Cm1dp64o552C9a20a_d1M
+
+### Create Menu
+POST {{BuberDinner.Api_HostAddress}}/hosts/{{hostId}}/menus
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Menu name",
+  "description": "Menu description",
+  "sections": [
+    {
+      "name": "Section 1 name",
+      "description": "Section 1 desc",
+      "items": [
+        {
+          "name": "Item 1 name",
+          "description": "Item 1 desc"
+        }
+      ]
+    },
+    {
+      "name": "Section 2 name",
+      "description": "Section 2 desc",
+      "items": [
+        {
+          "name": "Item 2 name",
+          "description": "Item 2 desc"
+        }
+      ]
+    }
+  ]
+}

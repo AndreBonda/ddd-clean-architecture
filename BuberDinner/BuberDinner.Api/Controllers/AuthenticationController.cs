@@ -1,7 +1,4 @@
-using System.Net;
-using BuberDinner.Api.Common.Mapping;
-using BuberDinner.Application.Authentication.Commands.RegisterUser;
-using BuberDinner.Application.Authentication.Common;
+using BuberDinner.Api.Common.Mappings;
 using BuberDinner.Application.Authentication.Queries.Login;
 using BuberDinner.Contracts.Authentication;
 using MediatR;

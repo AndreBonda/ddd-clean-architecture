@@ -13,20 +13,24 @@ public sealed class MenuSection : Entity<MenuSectionId>
     private MenuSection(
         MenuSectionId id,
         string name,
-        string description)
+        string description,
+        IEnumerable<MenuItem> items)
         : base(id)
     {
         Name = name;
         Description = description;
+        _items = items.ToList();
     }
 
     public static MenuSection Create(
         string name,
-        string description)
+        string description,
+        IEnumerable<MenuItem> items)
     {
         return new MenuSection(
             MenuSectionId.CreateUnique(),
             name,
-            description);
+            description,
+            items);
     }
 }

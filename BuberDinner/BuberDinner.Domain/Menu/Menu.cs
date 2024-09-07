@@ -30,6 +30,7 @@ public sealed class Menu : AggregateRoot<MenuId>
         string description,
         AverageRating averageRating,
         HostId hostId,
+        IEnumerable<MenuSection> sections,
         DateTime createdDateTime,
         DateTime updatedDateTime)
     : base(id)
@@ -38,6 +39,7 @@ public sealed class Menu : AggregateRoot<MenuId>
         Description = description;
         AverageRating = averageRating;
         HostId = hostId;
+        _sections = sections.ToList();
         CreatedDateTime = createdDateTime;
         UpdatedDateTime = updatedDateTime;
     }
@@ -46,8 +48,8 @@ public sealed class Menu : AggregateRoot<MenuId>
         string name,
         string description,
         AverageRating averageRating,
-        HostId hostId
-        )
+        HostId hostId,
+        IEnumerable<MenuSection> sections)
     {
         return new(
             MenuId.CreateUnique(),
@@ -55,6 +57,7 @@ public sealed class Menu : AggregateRoot<MenuId>
             description,
             averageRating,
             hostId,
+            sections,
             DateTime.UtcNow,
             DateTime.UtcNow
         );

@@ -1,5 +1,5 @@
 using BuberDinner.Application.Authentication.Common;
-using BuberDinner.Application.Authentication.Mapping;
+using BuberDinner.Application.Authentication.Mappings;
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Interfaces.Persistence;
 using BuberDinner.Domain.Common.Errors;

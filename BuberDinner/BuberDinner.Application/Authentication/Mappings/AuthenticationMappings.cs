@@ -1,9 +1,9 @@
 using BuberDinner.Application.Authentication.Commands.RegisterUser;
 using BuberDinner.Domain.User;
 
-namespace BuberDinner.Application.Authentication.Mapping;
+namespace BuberDinner.Application.Authentication.Mappings;
 
-public static class AuthenticationMapping
+public static class AuthenticationMappings
 {
     public static User ToUser(this RegisterUserCommand command)
         => User.Create(

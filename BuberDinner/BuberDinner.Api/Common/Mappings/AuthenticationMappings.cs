@@ -2,9 +2,9 @@ using BuberDinner.Application.Authentication.Commands.RegisterUser;
 using BuberDinner.Application.Authentication.Common;
 using BuberDinner.Contracts.Authentication;
 
-namespace BuberDinner.Api.Common.Mapping;
+namespace BuberDinner.Api.Common.Mappings;
 
-public static class AuthenticationMapping
+public static class AuthenticationMappings
 {
     public static RegisterUserCommand ToCommand(this RegisterRequest request)
         => new(request.FirstName, request.LastName, request.Email, request.Password);
