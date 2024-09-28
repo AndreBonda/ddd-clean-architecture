@@ -8,11 +8,11 @@ namespace BuberDinner.Domain.Guest.Entities;
 
 public sealed class GuestRating : Entity<GuestRatingId>
 {
-    public HostId HostId { get; }
-    public DinnerId DinnerId { get; }
-    public Rating Rating { get; }
-    public DateTime CreatedDateTime { get; }
-    public DateTime UpdatedDateTime { get; }
+    public HostId HostId { get; private set; }
+    public DinnerId DinnerId { get; private set; }
+    public Rating Rating { get; private set; }
+    public DateTime CreatedDateTime { get; private set; }
+    public DateTime UpdatedDateTime { get; private set; }
 
     private GuestRating(
         GuestRatingId id,
@@ -43,5 +43,12 @@ public sealed class GuestRating : Entity<GuestRatingId>
             rating,
             DateTime.UtcNow,
             DateTime.UtcNow);
+    }
+
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    private GuestRating()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    {
+
     }
 }

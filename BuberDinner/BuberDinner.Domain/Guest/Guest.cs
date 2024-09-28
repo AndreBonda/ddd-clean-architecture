@@ -18,13 +18,13 @@ public sealed class Guest : AggregateRoot<GuestId>
     private readonly List<MenuReviewId> _menuReviewIds = new();
     private readonly List<GuestRating> _guestRatings = new();
 
-    public string FirstName { get; }
-    public string LastName { get; }
-    public string ProfileImage { get; }
-    public AverageRating AverageRating { get; }
-    public UserId UserId { get; }
-    public DateTime CreatedDateTime { get; }
-    public DateTime UpdatedDateTime { get; }
+    public string FirstName { get; private set; }
+    public string LastName { get; private set; }
+    public string ProfileImage { get; private set; }
+    public AverageRating AverageRating { get; private set; }
+    public UserId UserId { get; private set; }
+    public DateTime CreatedDateTime { get; private set; }
+    public DateTime UpdatedDateTime { get; private set; }
 
     public IReadOnlyList<DinnerId> UpcomingDinnerIds => _upcomingDinnerIds.ToList();
     public IReadOnlyList<DinnerId> PastDinnerIds => _pastDinnerIds.ToList();
@@ -69,5 +69,12 @@ public sealed class Guest : AggregateRoot<GuestId>
             userId,
             DateTime.UtcNow,
             DateTime.UtcNow);
+    }
+
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    private Guest()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    {
+
     }
 }

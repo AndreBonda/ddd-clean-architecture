@@ -4,7 +4,7 @@ namespace BuberDinner.Domain.Host.ValueObjects;
 
 public sealed class HostId : ValueObject
 {
-    public Guid Value { get; }
+    public Guid Value { get; private set; }
 
     private HostId(Guid value)
     {
@@ -24,5 +24,10 @@ public sealed class HostId : ValueObject
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
+    }
+
+    private HostId()
+    {
+
     }
 }

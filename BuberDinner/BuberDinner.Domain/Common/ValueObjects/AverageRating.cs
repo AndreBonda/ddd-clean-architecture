@@ -32,4 +32,9 @@ public class AverageRating : ValueObject
     {
         yield return Value;
     }
+
+    private AverageRating()
+    {
+
+    }
 }

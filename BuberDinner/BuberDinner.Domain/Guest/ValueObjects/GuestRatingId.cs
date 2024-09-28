@@ -4,7 +4,7 @@ namespace BuberDinner.Domain.Guest.ValueObjects;
 
 public sealed class GuestRatingId : ValueObject
 {
-    public Guid Value { get; }
+    public Guid Value { get; private set; }
 
     private GuestRatingId(Guid value)
     {
@@ -19,5 +19,10 @@ public sealed class GuestRatingId : ValueObject
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
+    }
+
+    private GuestRatingId()
+    {
+
     }
 }

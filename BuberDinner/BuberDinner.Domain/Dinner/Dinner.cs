@@ -9,21 +9,21 @@ namespace BuberDinner.Domain.Dinner;
 public sealed class Dinner : AggregateRoot<DinnerId>
 {
     private readonly List<Reservation> _reservations = new();
-    public string Name { get; }
-    public DateTime StartDateTime { get; }
-    public DateTime EndDateTime { get; }
-    public DateTime? StartedDateTime { get; }
-    public DateTime? EndedDateTime { get; }
-    public string Status { get; }
-    public bool IsPublic { get; }
-    public int MaxGuests { get; }
-    public Price Price { get; }
-    public HostId HostId { get; }
-    public MenuId MenuId { get; }
-    public string ImageUrl { get; }
-    public Location Location { get; }
-    public DateTime CreatedDateTime { get; }
-    public DateTime UpdatedDateTime { get; }
+    public string Name { get; private set; }
+    public DateTime StartDateTime { get; private set; }
+    public DateTime EndDateTime { get; private set; }
+    public DateTime? StartedDateTime { get; private set; }
+    public DateTime? EndedDateTime { get; private set; }
+    public string Status { get; private set; }
+    public bool IsPublic { get; private set; }
+    public int MaxGuests { get; private set; }
+    public Price Price { get; private set; }
+    public HostId HostId { get; private set; }
+    public MenuId MenuId { get; private set; }
+    public string ImageUrl { get; private set; }
+    public Location Location { get; private set; }
+    public DateTime CreatedDateTime { get; private set; }
+    public DateTime UpdatedDateTime { get; private set; }
     public IReadOnlyCollection<Reservation> Reservations => _reservations.ToList();
 
     private Dinner(
@@ -61,5 +61,12 @@ public sealed class Dinner : AggregateRoot<DinnerId>
         Location = location;
         CreatedDateTime = createdDateTime;
         UpdatedDateTime = updatedDateTime;
+    }
+
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    private Dinner()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    {
+
     }
 }

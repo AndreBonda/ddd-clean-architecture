@@ -4,7 +4,7 @@ namespace BuberDinner.Domain.Common.ValueObjects;
 
 public class Rating : ValueObject
 {
-    public double Value { get; }
+    public double Value { get; private set; }
 
     private Rating(double value)
     {
@@ -19,5 +19,10 @@ public class Rating : ValueObject
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
+    }
+
+    private Rating()
+    {
+
     }
 }

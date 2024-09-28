@@ -2,15 +2,14 @@ using BuberDinner.Application.Common.Interfaces.Persistence;
 using BuberDinner.Domain.Menu;
 using BuberDinner.Domain.Menu.ValueObjects;
 
-namespace BuberDinner.Infrastructure.Persistence;
+namespace BuberDinner.Infrastructure.Persistence.Repositories;
 
-public class MenuRepository : IMenuRepository
+public class MenuRepository(BuberDinnerDbContext ctx) : IMenuRepository
 {
-    private readonly List<Menu> _menus = new();
     public async Task AddMenuAsync(Menu menu)
     {
-        await Task.CompletedTask;
-        _menus.Add(menu);
+        await ctx.AddAsync(menu);
+        await ctx.SaveChangesAsync();
     }
 
     public Task<Menu> GetByIdAsync(MenuId id)

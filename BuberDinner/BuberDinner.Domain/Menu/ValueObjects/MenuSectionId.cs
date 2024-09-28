@@ -4,7 +4,7 @@ namespace BuberDinner.Domain.Menu.ValueObjects;
 
 public sealed class MenuSectionId : ValueObject
 {
-    public Guid Value { get; }
+    public Guid Value { get; private set; }
 
     public MenuSectionId(Guid value)
     {
@@ -16,8 +16,19 @@ public sealed class MenuSectionId : ValueObject
         return new(Guid.NewGuid());
     }
 
+    public static MenuSectionId Create(Guid id)
+    {
+        return new(id);
+    }
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
     }
+
+    private MenuSectionId()
+    {
+
+    }
+
 }
