@@ -3,6 +3,7 @@ using BuberDinner.Domain.Common.ValueObjects;
 using BuberDinner.Domain.Dinner.ValueObjects;
 using BuberDinner.Domain.Host.ValueObjects;
 using BuberDinner.Domain.Menu.Entities;
+using BuberDinner.Domain.Menu.Events;
 using BuberDinner.Domain.Menu.ValueObjects;
 using BuberDinner.Domain.MenuReview.ValueObjects;
 
@@ -51,7 +52,7 @@ public sealed class Menu : AggregateRoot<MenuId>
         HostId hostId,
         IEnumerable<MenuSection> sections)
     {
-        return new(
+        Menu menu = new (
             MenuId.CreateUnique(),
             name,
             description,
@@ -61,6 +62,8 @@ public sealed class Menu : AggregateRoot<MenuId>
             DateTime.UtcNow,
             DateTime.UtcNow
         );
+        menu.AddDomainEvent(new MenuCreated(menu));
+        return menu;
     }
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
